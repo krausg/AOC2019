@@ -1,4 +1,4 @@
-package aoc.puzzle01.a;
+package aoc.puzzle01.b;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import aoc.NumberLine;
-import aoc.puzzle01.FuelRequirementsLineProcessor;
+import aoc.puzzle01.RecursiveFuelRequirementsLineProcessor;
 import aoc.puzzle01.SumFuelPostConvert;
 import time.projects.fileconverter.FileConverter;
 import time.projects.fileconverter.LineProcessor;
@@ -26,7 +26,7 @@ public class Main {
 	/**/);
 
 	final static List<LineProcessor<NumberLine>> puzzleLineProcessor = Arrays.asList(/**/
-			new FuelRequirementsLineProcessor()
+			new RecursiveFuelRequirementsLineProcessor()
 	/**/);
 
 	public static void main(String[] args) throws IOException {

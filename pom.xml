@@ -15,4 +15,12 @@
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
 	</build>
+
+	<dependencies>
+		<dependency>
+			<version>0.0.1-SNAPSHOT</version>
+			<artifactId>EnhancedFileConverter</artifactId>
+			<groupId>time.projects</groupId>
+		</dependency>
+	</dependencies>
 </project>

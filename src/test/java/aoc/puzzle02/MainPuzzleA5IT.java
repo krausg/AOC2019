@@ -22,7 +22,7 @@ public class MainPuzzleA5IT {
 	/**/);
 
 	final static List<LineProcessor<IntCodeCmd>> puzzleLineProcessor = Arrays.asList(/**/
-			new IntCodeCmdProcessor()
+			new IntCodeCmdProcessor(true)
 	/**/);
 
 	@Test

@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import time.projects.fileconverter.reader.ConverterReader;
+import time.projects.fileconverter.reader.ConverterScanner;
 
-public class IntCodeCmdScanner implements ConverterReader<IntCodeCmd> {
+public class IntCodeCmdScanner implements ConverterScanner<IntCodeCmd> {
 
 	@Override
 	public Collection<IntCodeCmd> scan(Path directory) {

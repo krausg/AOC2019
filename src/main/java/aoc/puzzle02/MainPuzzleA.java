@@ -1,32 +1,21 @@
 package aoc.puzzle02;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
 
-import aoc.FileLoader;
-import time.projects.fileconverter.FileConverter;
-import time.projects.fileconverter.LineProcessor;
-import time.projects.fileconverter.postconvert.FilePostConvert;
+import aoc.AOCPuzzle;
 
-public class MainPuzzleA {
+public class MainPuzzleA extends AOCPuzzle<IntCodeCmd> {
 
-	public static final String PUZZLE_NAME = "p2.txt";
-	final static List<FilePostConvert<?>> puzzlePostConvert = Arrays.asList(/**/
-			new PrintFirstOpCodePostConverter()
-	/**/);
-
-	final static List<LineProcessor<IntCodeCmd>> puzzleLineProcessor = Arrays.asList(/**/
-			new PrintIntCodeCmdProcessor(), new IntCodeCmdProcessor()
-	/**/);
+	@Override
+	protected void setup() {
+		this.setEingabeDateiName("p2.txt");
+		this.setConverterReader(new IntCodeCmdScanner());
+		this.addLineProcessors(new PrintIntCodeCmds(), new IntCodeCmdProcessor(true));
+		this.addPostConverters(new PrintFirstOpCodePostConverter(), new PrintIntCodeCmds());
+	}
 
 	public static void main(String[] args) throws IOException {
-		FileConverter<IntCodeCmd> conv = new FileConverter<>();
-		conv.getPostConverter().addAll(puzzlePostConvert);
-		conv.getLineProcessors().addAll(puzzleLineProcessor);
-		conv.setScanner(new IntCodeCmdScanner());
-		conv.getFiles().addAll(FileLoader.listAllFiles(PUZZLE_NAME));
-		Collection<IntCodeCmd> convert = conv.convert();
+		startSolving(new MainPuzzleA());
 	}
+
 }

@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class IntCodeProcessorTest {
 
-	IntCodeCmdProcessor processor = new IntCodeCmdProcessor();
+	IntCodeCmdProcessor processor = new IntCodeCmdProcessor(true);
 
 	@Test
 	public void aocTest1() {

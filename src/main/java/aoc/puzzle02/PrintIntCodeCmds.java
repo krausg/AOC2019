@@ -1,8 +1,11 @@
 package aoc.puzzle02;
 
-import time.projects.fileconverter.LineProcessor;
+import java.util.Collection;
 
-public class PrintIntCodeCmdProcessor implements LineProcessor<IntCodeCmd> {
+import time.projects.fileconverter.LineProcessor;
+import time.projects.fileconverter.postconvert.FilePostConvert;
+
+public class PrintIntCodeCmds implements LineProcessor<IntCodeCmd>, FilePostConvert<IntCodeCmd> {
 
 	@Override
 	public IntCodeCmd process(IntCodeCmd element) {
@@ -10,6 +13,12 @@ public class PrintIntCodeCmdProcessor implements LineProcessor<IntCodeCmd> {
 				element.getPos1(), element.getPos2(), element.getSaveTo());
 		System.out.println();
 		return element;
+	}
+
+	@Override
+	public Collection<IntCodeCmd> postConvert(Collection<IntCodeCmd> elements) {
+		elements.forEach(this::process);
+		return elements;
 	}
 
 }

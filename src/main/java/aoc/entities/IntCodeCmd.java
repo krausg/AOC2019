@@ -32,19 +32,19 @@ public class IntCodeCmd extends Line {
 		return opcode;
 	}
 
-	public long getOpcodeCode() {
+	public int getOpcodeCode() {
 		return opcode.getCode();
 	}
 
-	public Long getPos1Code() {
+	public int getPos1Code() {
 		return pos1.getCode();
 	}
 
-	public Long getPos2Code() {
+	public int getPos2Code() {
 		return pos2.getCode();
 	}
 
-	public Long getSaveToCode() {
+	public int getSaveToCode() {
 		return saveTo.getCode();
 	}
 

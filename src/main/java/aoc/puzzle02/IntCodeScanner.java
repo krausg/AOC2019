@@ -35,26 +35,8 @@ public class IntCodeScanner implements ConverterReader<IntCodeCmd> {
 			String line = null;
 			List<IntCode> memory = new ArrayList<>();
 			while ((line = reader.readLine()) != null) {
-				Long[] longs = stream(line.split(",")).map(Long::parseLong).toArray(Long[]::new);
-				intCodes.addAll(createIntCodeCmds(memory, longs));
-
-				// Deque<IntCode> codes = new
-				// ArrayDeque<>(Arrays.asList(line.split(","))).stream().map(Integer::parseInt)
-				// .map(IntCode::new).collect(Collectors.toCollection(ArrayDeque::new));
-				// if (codes.isEmpty()) {
-				// continue;
-				// }
-				//
-				// memory.addAll(codes);
-				// while (!codes.isEmpty()) {
-				// IntCodeCmd intcode = new IntCodeCmd(line, memory, codes.poll(), codes.poll(),
-				// codes.poll(),
-				// codes.poll());
-				// if (intcode.getSaveTo() == null || intcode.getOpcode().getCode() == 99) {
-				// break line_while;
-				// }
-				// intCodes.add(intcode);
-				// }
+				Integer[] integers = stream(line.split(",")).map(Integer::parseInt).toArray(Integer[]::new);
+				intCodes.addAll(createIntCodeCmds(memory, integers));
 			}
 
 			reader.close();
@@ -65,10 +47,6 @@ public class IntCodeScanner implements ConverterReader<IntCodeCmd> {
 	}
 
 	public static List<IntCodeCmd> createIntCodeCmds(List<IntCode> memory, Integer... codes2) {
-		return createIntCodeCmds(memory, Arrays.stream(codes2).map(Long::new).toArray(Long[]::new));
-	}
-
-	public static List<IntCodeCmd> createIntCodeCmds(List<IntCode> memory, Long... codes2) {
 		List<IntCodeCmd> intCodes = new ArrayList<>();
 		Deque<IntCode> codes = new ArrayDeque<>(Arrays.asList(codes2)).stream().map(IntCode::new)
 				.collect(Collectors.toCollection(ArrayDeque::new));

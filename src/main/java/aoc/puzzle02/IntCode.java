@@ -4,18 +4,18 @@ import java.util.Objects;
 
 public class IntCode {
 
-	private Long code;
+	private int code;
 
-	public IntCode(Long code) {
+	public IntCode(int code) {
 		super();
 		this.code = code;
 	}
 
-	public Long getCode() {
+	public int getCode() {
 		return code;
 	}
 
-	public void setCode(Long code) {
+	public void setCode(int code) {
 		this.code = code;
 	}
 

@@ -9,7 +9,7 @@ public class IntCodeProcessor implements LineProcessor<IntCodeCmd> {
 
 	@Override
 	public IntCodeCmd process(IntCodeCmd element) {
-		switch (element.getOpcode().getCode().intValue()) {
+		switch (element.getOpcode().getCode()) {
 		case 1:
 			plusOp(element);
 			break;
@@ -26,17 +26,17 @@ public class IntCodeProcessor implements LineProcessor<IntCodeCmd> {
 
 	private void plusOp(IntCodeCmd element) {
 		List<IntCode> memory = element.getMemory();
-		IntCode saveTo = memory.get(element.getSaveToCode().intValue());
-		Long val1 = memory.get(element.getPos1Code().intValue()).getCode();
-		Long val2 = memory.get(element.getPos2Code().intValue()).getCode();
+		IntCode saveTo = memory.get(element.getSaveToCode());
+		int val1 = memory.get(element.getPos1Code()).getCode();
+		int val2 = memory.get(element.getPos2Code()).getCode();
 		saveTo.setCode(val1 + val2);
 	}
 
 	private void multiplicateOp(IntCodeCmd element) {
 		List<IntCode> memory = element.getMemory();
-		IntCode saveTo = memory.get(element.getSaveToCode().intValue());
-		Long val1 = memory.get(element.getPos1Code().intValue()).getCode();
-		Long val2 = memory.get(element.getPos2Code().intValue()).getCode();
+		IntCode saveTo = memory.get(element.getSaveToCode());
+		int val1 = memory.get(element.getPos1Code()).getCode();
+		int val2 = memory.get(element.getPos2Code()).getCode();
 		saveTo.setCode(val1 * val2);
 	}
 

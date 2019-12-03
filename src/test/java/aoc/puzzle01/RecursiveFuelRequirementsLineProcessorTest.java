@@ -3,7 +3,7 @@ package aoc.puzzle01;
 import org.junit.Assert;
 import org.junit.Test;
 
-import aoc.NumberLine;
+import aoc.entities.NumberLine;
 import aoc.puzzle01.RecursiveFuelRequirementsLineProcessor;
 
 public class RecursiveFuelRequirementsLineProcessorTest {

@@ -1,4 +1,4 @@
-package aoc;
+package aoc.entities;
 
 import time.projects.fileconverter.entities.Line;
 

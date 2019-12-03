@@ -1,6 +1,5 @@
 package aoc.puzzle01;
 
-import aoc.entities.NumberLine;
 import time.projects.fileconverter.LineProcessor;
 
 public class RecursiveFuelRequirementsLineProcessor implements LineProcessor<NumberLine> {

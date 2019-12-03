@@ -1,15 +1,16 @@
 package aoc.puzzle02;
 
+import static aoc.puzzle02.IntCodeCmdScanner.createIntCodeCmds;
+import static org.junit.Assert.assertEquals;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import aoc.FileLoader;
-import aoc.entities.IntCodeCmd;
 import time.projects.fileconverter.FileConverter;
 import time.projects.fileconverter.LineProcessor;
 import time.projects.fileconverter.postconvert.FilePostConvert;
@@ -21,7 +22,7 @@ public class MainPuzzleA1IT {
 	/**/);
 
 	final static List<LineProcessor<IntCodeCmd>> puzzleLineProcessor = Arrays.asList(/**/
-			new IntCodeProcessor()
+			new IntCodeCmdProcessor()
 	/**/);
 
 	@Test
@@ -29,10 +30,10 @@ public class MainPuzzleA1IT {
 		FileConverter<IntCodeCmd> conv = new FileConverter<>();
 		conv.getPostConverter().addAll(puzzlePostConvert);
 		conv.getLineProcessors().addAll(puzzleLineProcessor);
-		conv.setScanner(new IntCodeScanner());
+		conv.setScanner(new IntCodeCmdScanner());
 		conv.getFiles().addAll(FileLoader.listAllFiles(PUZZLE_NAME));
 		List<IntCodeCmd> convert = new ArrayList<>(conv.convert());
-		Assert.assertEquals(2, convert.get(0).getOpcodeCode());
+		assertEquals(createIntCodeCmds(2, 0, 0, 0, 99), convert);
 	}
 
 }

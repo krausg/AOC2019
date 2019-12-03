@@ -3,8 +3,6 @@ package aoc.puzzle01;
 import org.junit.Assert;
 import org.junit.Test;
 
-import aoc.entities.NumberLine;
-
 public class FuelRequirementsLineProcessorTest {
 
 	FuelRequirementsLineProcessor processor = new FuelRequirementsLineProcessor();

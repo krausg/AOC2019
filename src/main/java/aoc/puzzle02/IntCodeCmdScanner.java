@@ -10,18 +10,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.Deque;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import aoc.entities.IntCodeCmd;
 import time.projects.fileconverter.reader.ConverterReader;
 
-public class IntCodeScanner implements ConverterReader<IntCodeCmd> {
+public class IntCodeCmdScanner implements ConverterReader<IntCodeCmd> {
 
 	@Override
 	public Collection<IntCodeCmd> scan(Path directory) {
@@ -33,10 +28,11 @@ public class IntCodeScanner implements ConverterReader<IntCodeCmd> {
 			BufferedReader reader = new BufferedReader(
 					new InputStreamReader(new FileInputStream(directory.toFile()), "UTF-8"));
 			String line = null;
-			List<IntCode> memory = new ArrayList<>();
+			int cmdPosition = 0;
+			List<Integer> memory = new ArrayList<>();
 			while ((line = reader.readLine()) != null) {
 				Integer[] integers = stream(line.split(",")).map(Integer::parseInt).toArray(Integer[]::new);
-				intCodes.addAll(createIntCodeCmds(memory, integers));
+				intCodes.addAll(createIntCodeCmds(cmdPosition, memory, integers));
 			}
 
 			reader.close();
@@ -46,18 +42,19 @@ public class IntCodeScanner implements ConverterReader<IntCodeCmd> {
 		}
 	}
 
-	public static List<IntCodeCmd> createIntCodeCmds(List<IntCode> memory, Integer... codes2) {
-		List<IntCodeCmd> intCodes = new ArrayList<>();
-		Deque<IntCode> codes = new ArrayDeque<>(Arrays.asList(codes2)).stream().map(IntCode::new)
-				.collect(Collectors.toCollection(ArrayDeque::new));
+	public static List<IntCodeCmd> createIntCodeCmds(Integer... codes) {
+		return createIntCodeCmds(0, new ArrayList<>(), codes);
+	}
 
-		memory.addAll(codes);
-		while (!codes.isEmpty()) {
-			IntCodeCmd intcode = new IntCodeCmd("", memory, codes.poll(), codes.poll(), codes.poll(), codes.poll());
-			if (intcode.getSaveTo() == null) {
-				break;
+	public static List<IntCodeCmd> createIntCodeCmds(int cmdPosition, List<Integer> memory, Integer... codes) {
+		List<IntCodeCmd> intCodes = new ArrayList<>();
+		for (int i = 0; i < codes.length; i++) {
+			if ((i + 4) % 4 == 0 && codes.length >= cmdPosition + 4) {
+				IntCodeCmd intcode = new IntCodeCmd(memory, cmdPosition);
+				cmdPosition += 4;
+				intCodes.add(intcode);
 			}
-			intCodes.add(intcode);
+			memory.add(codes[i]);
 		}
 		return intCodes;
 	}

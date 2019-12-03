@@ -1,4 +1,4 @@
-package aoc.entities;
+package aoc.puzzle01;
 
 import time.projects.fileconverter.entities.Line;
 

@@ -6,7 +6,6 @@ import java.util.Collection;
 import java.util.List;
 
 import aoc.FileLoader;
-import aoc.entities.NumberLine;
 import time.projects.fileconverter.FileConverter;
 import time.projects.fileconverter.LineProcessor;
 import time.projects.fileconverter.postconvert.FilePostConvert;

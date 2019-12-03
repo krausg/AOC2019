@@ -4,7 +4,6 @@ import static java.util.Arrays.asList;
 
 import java.util.Collection;
 
-import aoc.entities.NumberLine;
 import time.projects.fileconverter.postconvert.FilePostConvert;
 
 public class SumFuelPostConvert implements FilePostConvert<NumberLine> {

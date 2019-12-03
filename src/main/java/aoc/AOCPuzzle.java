@@ -14,27 +14,27 @@ public abstract class AOCPuzzle<T extends Line> {
 	private static String PUZZLE_NAME = "";
 	private FileConverter<T> conv = new FileConverter<T>();
 
-	protected void setEingabeDateiName(String eingabeDateiName) {
+	public void setEingabeDateiName(String eingabeDateiName) {
 		PUZZLE_NAME = eingabeDateiName;
 	}
 
-	protected void addPostConverters(CollectionConverter<?>... postConverters) {
+	public void addPostConverters(CollectionConverter<?>... postConverters) {
 		conv.getPostConverter().addAll(Arrays.asList(postConverters));
 	}
 
-	protected void addPreConverters(CollectionConverter<T>... postConverters) {
+	public void addPreConverters(CollectionConverter<T>... postConverters) {
 		conv.getPreConverter().addAll(Arrays.asList(postConverters));
 	}
 
-	protected void setConverterReader(ConverterScanner<T> scanner) {
+	public void setConverterReader(ConverterScanner<T> scanner) {
 		conv.setScanner(scanner);
 	}
 
-	protected void addLineProcessors(LineProcessor<T>... lineProcessors) {
+	public void addLineProcessors(LineProcessor<T>... lineProcessors) {
 		conv.getLineProcessors().addAll(Arrays.asList(lineProcessors));
 	}
 
-	protected abstract void setup();
+	public abstract void setup();
 
 	protected static <T extends Line> Collection<T> startSolving(AOCPuzzle<T> aocPuzzle) throws IOException {
 		aocPuzzle.setup();

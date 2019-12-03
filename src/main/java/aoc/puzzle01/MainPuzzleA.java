@@ -8,7 +8,7 @@ import time.projects.fileconverter.reader.LineScanner;
 public class MainPuzzleA extends AOCPuzzle<NumberLine> {
 
 	@Override
-	protected void setup() {
+	public void setup() {
 		this.setEingabeDateiName("p1.txt");
 		this.setConverterReader(new LineScanner<>(NumberLine.class));
 		this.addLineProcessors(new FuelRequirementsLineProcessor());

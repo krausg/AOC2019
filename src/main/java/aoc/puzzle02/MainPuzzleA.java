@@ -7,7 +7,7 @@ import aoc.AOCPuzzle;
 public class MainPuzzleA extends AOCPuzzle<IntCodeCmd> {
 
 	@Override
-	protected void setup() {
+	public void setup() {
 		this.setEingabeDateiName("p2.txt");
 		this.setConverterReader(new IntCodeCmdScanner());
 		this.addPreConverters(new SetupIntCodeCmdsPuzzle2(12, 2));

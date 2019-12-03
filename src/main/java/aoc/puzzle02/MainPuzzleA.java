@@ -14,7 +14,7 @@ public class MainPuzzleA {
 
 	public static final String PUZZLE_NAME = "p2.txt";
 	final static List<FilePostConvert<?>> puzzlePostConvert = Arrays.asList(/**/
-	// new SumFuelPostConvert()
+			new PrintFirstOpCodePostConverter()
 	/**/);
 
 	final static List<LineProcessor<IntCodeCmd>> puzzleLineProcessor = Arrays.asList(/**/
@@ -28,7 +28,5 @@ public class MainPuzzleA {
 		conv.setScanner(new IntCodeCmdScanner());
 		conv.getFiles().addAll(FileLoader.listAllFiles(PUZZLE_NAME));
 		Collection<IntCodeCmd> convert = conv.convert();
-
-		System.out.println(convert.iterator().next().getOpcode());
 	}
 }

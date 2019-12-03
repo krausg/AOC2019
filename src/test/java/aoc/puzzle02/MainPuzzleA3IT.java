@@ -13,12 +13,12 @@ import org.junit.Test;
 import aoc.FileLoader;
 import time.projects.fileconverter.FileConverter;
 import time.projects.fileconverter.LineProcessor;
-import time.projects.fileconverter.postconvert.FilePostConvert;
+import time.projects.fileconverter.postconvert.CollectionConverter;
 
 public class MainPuzzleA3IT {
 
 	public static final String PUZZLE_NAME = "p23.txt";
-	final static List<FilePostConvert<?>> puzzlePostConvert = Arrays.asList(/**/
+	final static List<CollectionConverter<?>> puzzlePostConvert = Arrays.asList(/**/
 	/**/);
 
 	final static List<LineProcessor<IntCodeCmd>> puzzleLineProcessor = Arrays.asList(/**/

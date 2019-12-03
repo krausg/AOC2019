@@ -49,7 +49,7 @@ public class IntCodeCmdScanner implements ConverterScanner<IntCodeCmd> {
 	public static List<IntCodeCmd> createIntCodeCmds(int cmdPosition, List<Integer> memory, Integer... codes) {
 		List<IntCodeCmd> intCodes = new ArrayList<>();
 		for (int i = 0; i < codes.length; i++) {
-			if ((i + 4) % 4 == 0 && codes.length >= cmdPosition + 4) {
+			if ((i + 4) % 4 == 0) {
 				IntCodeCmd intcode = new IntCodeCmd(memory, cmdPosition);
 				cmdPosition += 4;
 				intCodes.add(intcode);

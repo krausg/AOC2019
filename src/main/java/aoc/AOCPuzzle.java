@@ -7,7 +7,7 @@ import java.util.Collection;
 import time.projects.fileconverter.FileConverter;
 import time.projects.fileconverter.LineProcessor;
 import time.projects.fileconverter.entities.Line;
-import time.projects.fileconverter.postconvert.FilePostConvert;
+import time.projects.fileconverter.postconvert.CollectionConverter;
 import time.projects.fileconverter.reader.ConverterScanner;
 
 public abstract class AOCPuzzle<T extends Line> {
@@ -18,8 +18,12 @@ public abstract class AOCPuzzle<T extends Line> {
 		PUZZLE_NAME = eingabeDateiName;
 	}
 
-	protected void addPostConverters(FilePostConvert<?>... postConverters) {
+	protected void addPostConverters(CollectionConverter<?>... postConverters) {
 		conv.getPostConverter().addAll(Arrays.asList(postConverters));
+	}
+
+	protected void addPreConverters(CollectionConverter<T>... postConverters) {
+		conv.getPreConverter().addAll(Arrays.asList(postConverters));
 	}
 
 	protected void setConverterReader(ConverterScanner<T> scanner) {
@@ -28,7 +32,6 @@ public abstract class AOCPuzzle<T extends Line> {
 
 	protected void addLineProcessors(LineProcessor<T>... lineProcessors) {
 		conv.getLineProcessors().addAll(Arrays.asList(lineProcessors));
-
 	}
 
 	protected abstract void setup();

@@ -3,9 +3,9 @@ package aoc.puzzle02;
 import java.util.Collection;
 
 import time.projects.fileconverter.LineProcessor;
-import time.projects.fileconverter.postconvert.FilePostConvert;
+import time.projects.fileconverter.postconvert.CollectionConverter;
 
-public class PrintIntCodeCmds implements LineProcessor<IntCodeCmd>, FilePostConvert<IntCodeCmd> {
+public class PrintIntCodeCmds implements LineProcessor<IntCodeCmd>, CollectionConverter<IntCodeCmd> {
 
 	@Override
 	public IntCodeCmd process(IntCodeCmd element) {
@@ -16,7 +16,7 @@ public class PrintIntCodeCmds implements LineProcessor<IntCodeCmd>, FilePostConv
 	}
 
 	@Override
-	public Collection<IntCodeCmd> postConvert(Collection<IntCodeCmd> elements) {
+	public Collection<IntCodeCmd> convert(Collection<IntCodeCmd> elements) {
 		elements.forEach(this::process);
 		return elements;
 	}

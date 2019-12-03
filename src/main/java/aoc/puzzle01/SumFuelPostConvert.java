@@ -4,12 +4,12 @@ import static java.util.Arrays.asList;
 
 import java.util.Collection;
 
-import time.projects.fileconverter.postconvert.FilePostConvert;
+import time.projects.fileconverter.postconvert.CollectionConverter;
 
-public class SumFuelPostConvert implements FilePostConvert<NumberLine> {
+public class SumFuelPostConvert implements CollectionConverter<NumberLine> {
 
 	@Override
-	public Collection<NumberLine> postConvert(Collection<NumberLine> elements) {
+	public Collection<NumberLine> convert(Collection<NumberLine> elements) {
 		long sum = (long) elements.stream().mapToDouble(NumberLine::getLineAsDouble).sum();
 		return asList(new NumberLine("" + sum));
 	}

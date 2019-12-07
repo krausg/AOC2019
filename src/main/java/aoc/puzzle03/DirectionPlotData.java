@@ -1,6 +1,5 @@
 package aoc.puzzle03;
 
-import java.awt.Point;
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Collection;
@@ -10,9 +9,9 @@ import java.util.Map;
 
 public class DirectionPlotData {
 
-	private Map<Integer, Deque<Point>> directionIdPlotDataMap = new HashMap<>();
+	private Map<Integer, Deque<DirectionPoint>> directionIdPlotDataMap = new HashMap<>();
 
-	public void addPlotData(int directionId, Collection<Point> plotDatas) {
+	public void addPlotData(int directionId, Collection<DirectionPoint> plotDatas) {
 		// System.out.println("fuege punkte hinzu: " + plotDatas);
 		directionIdPlotDataMap.computeIfPresent(directionId, (k, v) -> {
 			v.addAll(plotDatas);
@@ -21,16 +20,16 @@ public class DirectionPlotData {
 		directionIdPlotDataMap.putIfAbsent(directionId, new ArrayDeque<>(plotDatas));
 	}
 
-	public Point getPlotPoint(int directionId) {
+	public DirectionPoint getPlotPoint(int directionId) {
 		if (!directionIdPlotDataMap.containsKey(directionId)) {
-			directionIdPlotDataMap.put(directionId, new ArrayDeque<>(Arrays.asList(new Point(0, 0))));
+			directionIdPlotDataMap.put(directionId, new ArrayDeque<>(Arrays.asList(new DirectionPoint(0, 0, 0))));
 		}
 		// System.out.println("letzter punkt:" +
 		// directionIdPlotDataMap.get(directionId).getLast());
 		return directionIdPlotDataMap.get(directionId).getLast();
 	}
 
-	public Map<Integer, Deque<Point>> getDirectionIdPlotDataMap() {
+	public Map<Integer, Deque<DirectionPoint>> getDirectionIdPlotDataMap() {
 		return directionIdPlotDataMap;
 	}
 }

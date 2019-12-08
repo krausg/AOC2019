@@ -38,7 +38,7 @@ public abstract class AOCPuzzle<T extends Line> {
 
 	protected static <T extends Line> Collection<T> startSolving(AOCPuzzle<T> aocPuzzle) throws IOException {
 		aocPuzzle.setup();
-		aocPuzzle.conv.getFiles().addAll(FileLoader.listAllFiles(PUZZLE_NAME));
+		aocPuzzle.conv.getFiles().addAll(FileLoader.findFiles(PUZZLE_NAME));
 		return aocPuzzle.conv.convert();
 	}
 }

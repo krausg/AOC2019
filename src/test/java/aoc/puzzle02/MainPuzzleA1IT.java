@@ -31,7 +31,7 @@ public class MainPuzzleA1IT {
 		conv.getPostConverter().addAll(puzzlePostConvert);
 		conv.getLineProcessors().addAll(puzzleLineProcessor);
 		conv.setScanner(new IntCodeCmdScanner());
-		conv.getFiles().addAll(FileLoader.listAllFiles(PUZZLE_NAME));
+		conv.getFiles().addAll(FileLoader.findFiles(PUZZLE_NAME));
 		List<IntCodeCmd> convert = new ArrayList<>(conv.convert());
 		assertEquals(createIntCodeCmds(2, 0, 0, 0, 99), convert);
 	}

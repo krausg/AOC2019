@@ -2,6 +2,7 @@ package aoc.puzzle05;
 
 import static aoc.FileLoader.findFile;
 import static java.nio.file.Files.lines;
+import static java.util.Arrays.copyOfRange;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -26,7 +27,7 @@ public class MainPuzzleA {
 		OPCODE_CMD_PARAM_MODES.put(1, new Boolean[] { true, true, false });
 		OPCODE_CMD_PARAM_MODES.put(2, new Boolean[] { true, true, false });
 		OPCODE_CMD_PARAM_MODES.put(3, new Boolean[] { false });
-		OPCODE_CMD_PARAM_MODES.put(4, new Boolean[] { false });
+		OPCODE_CMD_PARAM_MODES.put(4, new Boolean[] { true });
 		OPCODE_CMD_PARAM_MODES.put(9, new Boolean[] {});
 	}
 
@@ -38,7 +39,8 @@ public class MainPuzzleA {
 			int[] opCodeNums = (memory[memPos] + "").chars().map(x -> x - '0').toArray();
 			Integer opLength = OPCODE_CMD_LENGTH.get(opCodeNums[opCodeNums.length - 1]);
 			int[] params = params(memory, memPos, opLength, opCodeNums);
-			System.out.printf("mempos:%03d opCode: %05d params:%s %n", memPos, memory[memPos], Arrays.toString(params));
+			System.out.printf("mempos:%03d opCode: %05d params:%-20s params_before: %s%n", memPos, memory[memPos],
+					Arrays.toString(params), Arrays.toString(copyOfRange(memory, memPos + 1, memPos + opLength)));
 
 			// process methode oder teil von enum
 			switch (opCodeNums[opCodeNums.length - 1]) {

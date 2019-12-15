@@ -14,8 +14,8 @@ public interface IntCodeCmd {
 
 	default void execute(IntCodeProgram program) {
 		int intPointer = program.getIntPointer();
-		execute(program, getParameterValues(program.getMemory(), intPointer));
 		program.setIntPointer(intPointer + getOpCodeLength());
+		execute(program, getParameterValues(program.getMemory(), intPointer));
 	}
 
 	void execute(IntCodeProgram pgm, IntCodeValue[] params);

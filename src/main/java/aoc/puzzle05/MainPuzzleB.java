@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainPuzzleA {
+public class MainPuzzleB {
 
 	private static final Map<Integer, IntCodeCmd> cmdMap = new HashMap<>();
 	static {
@@ -16,6 +16,10 @@ public class MainPuzzleA {
 		cmdMap.put(2, new OpCodeMult());
 		cmdMap.put(3, new OpCodeRead());
 		cmdMap.put(4, new OpCodeWrite());
+		cmdMap.put(5, new OpCodeJumpIfTrue());
+		cmdMap.put(6, new OpCodeJumpIfFalse());
+		cmdMap.put(7, new OpCodeExprLessThan());
+		cmdMap.put(8, new OpCodeExprEquals());
 		cmdMap.put(99, new OpCodeExit());
 	}
 

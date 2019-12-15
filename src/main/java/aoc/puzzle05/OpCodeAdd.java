@@ -1,0 +1,15 @@
+package aoc.puzzle05;
+
+public class OpCodeAdd implements IntCodeCmd {
+
+	@Override
+	public void execute(IntCodeProgram pgm, IntCodeValue[] params) {
+		params[2].value = params[0].value + params[1].value;
+	}
+
+	@Override
+	public int getOpCodeLength() {
+		return 4;
+	}
+
+}

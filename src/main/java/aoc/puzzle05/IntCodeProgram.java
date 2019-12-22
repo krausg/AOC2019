@@ -23,6 +23,13 @@ public class IntCodeProgram {
 		this.cmdMap = cmdMap;
 	}
 
+	public IntCodeProgram(IntCodeProgram copyPgm) {
+		super();
+		this.memory = new IntCodeMemory(copyPgm.memory);
+		this.cmdMap = new HashMap<>(copyPgm.cmdMap);
+		this.intPointer = copyPgm.intPointer;
+	}
+
 	public String start() {
 		isRunning = true;
 		while (isRunning) {

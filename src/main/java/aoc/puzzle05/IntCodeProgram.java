@@ -5,7 +5,9 @@ import static aoc.puzzle05.IntCodeMemory.IMMEDIATE_MODE;
 import java.util.HashMap;
 import java.util.Map;
 
-public class IntCodeProgram {
+public class IntCodeProgram implements IntCodeController {
+
+	private String name;
 
 	private final IntCodeMemory memory;
 
@@ -23,14 +25,15 @@ public class IntCodeProgram {
 		this.cmdMap = cmdMap;
 	}
 
-	public IntCodeProgram(IntCodeProgram copyPgm) {
+	public IntCodeProgram(IntCodeController copyPgm) {
 		super();
-		this.memory = new IntCodeMemory(copyPgm.memory);
-		this.cmdMap = new HashMap<>(copyPgm.cmdMap);
-		this.intPointer = copyPgm.intPointer;
+		this.memory = new IntCodeMemory(copyPgm.getMemory());
+		this.cmdMap = new HashMap<>(copyPgm.getCmdMap());
+		this.intPointer = copyPgm.getIntPointer();
 	}
 
-	public String start() {
+	@Override
+	public String run() {
 		isRunning = true;
 		while (isRunning) {
 			IntCodeValue opCode = memory.valueAt(intPointer, IMMEDIATE_MODE);
@@ -39,24 +42,48 @@ public class IntCodeProgram {
 		return output.toString();
 	}
 
+	@Override
 	public int getIntPointer() {
 		return intPointer;
 	}
 
+	@Override
 	public void setIntPointer(int intPointer) {
 		this.intPointer = intPointer;
 	}
 
+	@Override
 	public IntCodeMemory getMemory() {
 		return memory;
 	}
 
+	@Override
 	public StringBuilder getOutput() {
 		return output;
 	}
 
+	@Override
 	public void setRunning(boolean isRunning) {
 		this.isRunning = isRunning;
+	}
+
+	@Override
+	public Map<Integer, IntCodeCmd> getCmdMap() {
+		return cmdMap;
+	}
+
+	@Override
+	public void setCmdMap(Map<Integer, IntCodeCmd> cmdMap) {
+		this.cmdMap = cmdMap;
+	}
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

@@ -3,7 +3,7 @@ package aoc.puzzle05;
 public class OpCodeExit implements IntCodeCmd {
 
 	@Override
-	public void execute(IntCodeProgram pgm, IntCodeValue[] params) {
+	public void execute(IntCodeController pgm, IntCodeValue[] params) {
 		pgm.setRunning(false);
 	}
 

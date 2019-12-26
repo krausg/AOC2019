@@ -14,7 +14,7 @@ public class MainPuzzleB {
 	static {
 		cmdMap.put(1, new OpCodeAdd());
 		cmdMap.put(2, new OpCodeMult());
-		cmdMap.put(3, new OpCodeRead());
+		cmdMap.put(3, new OpCodeRead(System.in));
 		cmdMap.put(4, new OpCodeWrite());
 		cmdMap.put(5, new OpCodeJumpIfTrue());
 		cmdMap.put(6, new OpCodeJumpIfFalse());
@@ -27,7 +27,7 @@ public class MainPuzzleB {
 		IntCodeMemory memory = new IntCodeMemory(lines(findFile("p5.txt")).map(line -> line.split(","))
 				.flatMap(Arrays::stream).map(IntCodeValue::new).toArray(IntCodeValue[]::new));
 
-		System.out.println(new IntCodeProgram(memory, cmdMap).start());
+		System.out.println(new IntCodeProgram(memory, cmdMap).run());
 	}
 
 }

@@ -3,7 +3,7 @@ package aoc.puzzle05;
 public class OpCodeWrite implements IntCodeCmd {
 
 	@Override
-	public void execute(IntCodeProgram pgm, IntCodeValue[] params) {
+	public void execute(IntCodeController pgm, IntCodeValue[] params) {
 		pgm.getOutput().append(params[0].value);
 	}
 

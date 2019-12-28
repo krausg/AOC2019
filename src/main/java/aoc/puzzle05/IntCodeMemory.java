@@ -1,7 +1,5 @@
 package aoc.puzzle05;
 
-import java.util.Arrays;
-
 public class IntCodeMemory {
 
 	public final static int IMMEDIATE_MODE = 1;
@@ -16,7 +14,10 @@ public class IntCodeMemory {
 
 	public IntCodeMemory(IntCodeMemory copyMemory) {
 		super();
-		memory = Arrays.copyOf(copyMemory.memory, copyMemory.memory.length);
+		memory = new IntCodeValue[copyMemory.memory.length];
+		for (int i = 0; i < copyMemory.memory.length; i++) {
+			memory[i] = new IntCodeValue(copyMemory.memory[i].value);
+		}
 	}
 
 	public IntCodeValue[] valuesAt(int start, int end, int[] accessFlags) {

@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class MainPuzzleA {
 
-	private static final Map<Integer, IntCodeCmd> cmdMap = new HashMap<>();
+	public static final Map<Integer, IntCodeCmd> cmdMap = new HashMap<>();
 	static {
 		cmdMap.put(1, new OpCodeAdd());
 		cmdMap.put(2, new OpCodeMult());
@@ -20,10 +20,14 @@ public class MainPuzzleA {
 	}
 
 	public static void main(String[] args) throws IOException {
-		IntCodeMemory memory = new IntCodeMemory(lines(findFile("p5.txt")).map(line -> line.split(","))
-				.flatMap(Arrays::stream).map(IntCodeValue::new).toArray(IntCodeValue[]::new));
+		System.out.println(run("p5.txt", cmdMap));
+	}
 
-		System.out.println(new IntCodeProgram(memory, cmdMap).run());
+	public static String run(String dateiname, Map<Integer, IntCodeCmd> cmdMap) throws IOException {
+		IntCodeMemory memory = new IntCodeMemory(lines(findFile(dateiname)).map(line -> line.split(","))
+				.flatMap(Arrays::stream).map(IntCodeValue::new).toArray(IntCodeValue[]::new));
+		return new IntCodeProgram(memory, cmdMap).run();
+
 	}
 
 }

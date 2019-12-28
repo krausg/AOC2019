@@ -11,25 +11,24 @@ import org.apache.logging.log4j.Logger;
 public class IntCodeLoggerUtils {
 
 	private static final String INTCODE_CONTROLLER_FORMAT = "[%12s//%03d]: %s";
-	private static final String INTCODE_CMD_FORMAT = "[%10s//%03d+%02d]: %15s -- [AFTER]( %20s ) -- [BEFORE]( %20s )";
+	private static final String INTCODE_CMD_FORMAT = "[%10s//%03d+%02d]: %15s -- [PARAMS]( %30s )";
 	private final static Logger logger = LogManager.getLogger();
 
 	public static void loggerDebug(IntCodeController controller, IntCodeCmd cmd, IntCodeValue[] params) {
-		logger.debug(format(INTCODE_CMD_FORMAT, controller.getName(), controller.getIntPointer(), cmd.getOpCodeLength(),
-				getNameNormalized(cmd), normalizeParameters(params),
-				normalizeIntParameters(cmd.getOpCodeNumbers(controller.getMemory(), controller.getIntPointer()))));
+		if (logger.isDebugEnabled()) {
+			logger.debug(format(INTCODE_CMD_FORMAT, controller.getName(), controller.getIntPointer(),
+					cmd.getOpCodeLength(), getNameNormalized(cmd), normalizeParameters(params)));
+		}
 	}
 
 	public static void loggerDebug(IntCodeController controller, String string) {
-		logger.debug(format(INTCODE_CONTROLLER_FORMAT, controller.getName(), controller.getIntPointer(), string));
-	}
-
-	private static String normalizeIntParameters(int[] params) {
-		return stream(params).mapToObj(x -> String.format("%5s", x)).collect(Collectors.joining());
+		if (logger.isDebugEnabled()) {
+			logger.debug(format(INTCODE_CONTROLLER_FORMAT, controller.getName(), controller.getIntPointer(), string));
+		}
 	}
 
 	private static <T> String normalizeParameters(T[] params) {
-		return stream(params).map(x -> format("%5s", x.toString())).collect(Collectors.joining());
+		return stream(params).map(x -> format("%10s", x.toString())).collect(Collectors.joining());
 	}
 
 	private static String getNameNormalized(IntCodeCmd cmd) {

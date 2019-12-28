@@ -4,7 +4,7 @@ import java.util.Map;
 
 public interface IntCodeController {
 
-	void setRunning(boolean isRunning);
+	void setPaused(boolean isRunning);
 
 	StringBuilder getOutput();
 
@@ -21,5 +21,15 @@ public interface IntCodeController {
 	void setCmdMap(Map<Integer, IntCodeCmd> cmdMap);
 
 	String getName();
+
+	void setName(String name);
+
+	IntCodeController klon();
+
+	void setHalted(boolean isHalted);
+
+	boolean isHalted();
+
+	void resetOutputCache();
 
 }

@@ -17,7 +17,9 @@ public class IntCodeProgram implements IntCodeController {
 
 	private Map<Integer, IntCodeCmd> cmdMap = new HashMap<>();
 
-	private boolean isRunning = false;
+	private boolean isPaused = false;
+
+	private boolean isHalted = false;
 
 	public IntCodeProgram(IntCodeMemory memory, Map<Integer, IntCodeCmd> cmdMap) {
 		super();
@@ -34,12 +36,16 @@ public class IntCodeProgram implements IntCodeController {
 
 	@Override
 	public String run() {
-		isRunning = true;
-		while (isRunning) {
+		while (!isPaused && !isHalted) {
 			IntCodeValue opCode = memory.valueAt(intPointer, IMMEDIATE_MODE);
 			cmdMap.get(opCode.value % 100).execute(this);
 		}
 		return output.toString();
+	}
+
+	@Override
+	public void resetOutputCache() {
+		output = new StringBuilder();
 	}
 
 	@Override
@@ -63,8 +69,8 @@ public class IntCodeProgram implements IntCodeController {
 	}
 
 	@Override
-	public void setRunning(boolean isRunning) {
-		this.isRunning = isRunning;
+	public void setPaused(boolean isPaused) {
+		this.isPaused = isPaused;
 	}
 
 	@Override
@@ -82,8 +88,24 @@ public class IntCodeProgram implements IntCodeController {
 		return name;
 	}
 
+	@Override
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public IntCodeController klon() {
+		return new IntCodeProgram(this);
+	}
+
+	@Override
+	public boolean isHalted() {
+		return isHalted;
+	}
+
+	@Override
+	public void setHalted(boolean isHalted) {
+		this.isHalted = isHalted;
 	}
 
 }

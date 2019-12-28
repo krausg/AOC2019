@@ -4,7 +4,7 @@ public class OpCodeExit implements IntCodeCmd {
 
 	@Override
 	public void execute(IntCodeController pgm, IntCodeValue[] params) {
-		pgm.setRunning(false);
+		pgm.setHalted(true);
 	}
 
 	@Override

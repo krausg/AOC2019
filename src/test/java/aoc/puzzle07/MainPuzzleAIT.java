@@ -1,5 +1,7 @@
 package aoc.puzzle07;
 
+import static aoc.puzzle07.IntCodeProgramOutputMaximizer.run;
+import static aoc.puzzle07.MainPuzzleA.createIntCodeProgram;
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 
@@ -22,6 +24,11 @@ public class MainPuzzleAIT {
 	@Test
 	public void testAOCA3() throws Exception {
 		assertEquals("65210", MainPuzzleA.run("p73.txt", new ArrayList<>(asList(1, 0, 4, 3, 2)), "0"));
+	}
+
+	@Test
+	public void testAOCAMain() throws Exception {
+		assertEquals(51679, run(createIntCodeProgram("p7.txt", new ArrayList<Integer>(), "0"), asList(0, 1, 2, 3, 4)));
 	}
 
 }

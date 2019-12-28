@@ -10,6 +10,11 @@ public class OpCodePresetableRead extends OpCodeRead {
 
 	private Map<Integer, Integer> presetMap;
 
+	public OpCodePresetableRead(String stringAsInput, Map<Integer, Integer> presetMap) {
+		super(stringAsInput);
+		this.presetMap = presetMap;
+	}
+
 	public OpCodePresetableRead(InputStream inputStream, Map<Integer, Integer> presetMap) {
 		super(inputStream);
 		this.presetMap = presetMap;

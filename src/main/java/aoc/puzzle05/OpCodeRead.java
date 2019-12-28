@@ -1,11 +1,16 @@
 package aoc.puzzle05;
 
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Scanner;
 
 public class OpCodeRead implements IntCodeCmd {
 
 	protected final Scanner scanner;
+
+	public OpCodeRead(String inputString) {
+		this(new ByteArrayInputStream(inputString.getBytes()));
+	}
 
 	public OpCodeRead(InputStream inputStream) {
 		super();

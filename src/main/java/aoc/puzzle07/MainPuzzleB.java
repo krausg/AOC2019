@@ -22,7 +22,7 @@ import aoc.puzzle05.OpCodeJumpIfFNull;
 import aoc.puzzle05.OpCodeJumpIfNotNull;
 import aoc.puzzle05.OpCodeMult;
 
-public class MainPuzzleA {
+public class MainPuzzleB {
 
 	private static final Map<Integer, IntCodeCmd> cmdMap = new HashMap<>();
 	static {
@@ -38,7 +38,7 @@ public class MainPuzzleA {
 
 	public static void main(String[] args) throws IOException {
 		System.out.println(IntCodeProgramOutputMaximizer
-				.run(createIntCodeProgram("p7.txt", new ArrayList<Integer>(), "0"), asList(0, 1, 2, 3, 4)));
+				.run(createIntCodeProgram("p7.txt", new ArrayList<Integer>(), "0"), asList(5, 6, 7, 8, 9)));
 	}
 
 	public static String run(String dateiName, List<Integer> phaseSettings, String firstInput) throws IOException {
@@ -50,6 +50,7 @@ public class MainPuzzleA {
 		IntCodeMemory memory = new IntCodeMemory(lines(findFile(dateiName)).map(line -> line.split(","))
 				.flatMap(Arrays::stream).map(IntCodeValue::new).toArray(IntCodeValue[]::new));
 		IntCodeAmplifyableController mainPGM = new IntCodeAmplifyableProgram(memory, cmdMap, phaseSettings);
+		mainPGM.setFeedbackLoopMode(true);
 		mainPGM.setFirstInput(firstInput);
 		return mainPGM;
 	}

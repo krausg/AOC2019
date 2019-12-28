@@ -1,11 +1,11 @@
 package aoc.puzzle05;
 
-public class OpCodeJumpIfTrue implements IntCodeCmd {
+public class OpCodeJumpIfFNull implements IntCodeCmd {
 
 	@Override
 	public void execute(IntCodeController pgm, IntCodeValue[] params) {
-		if (params[0].value != 0) {
-			pgm.setIntPointer(params[1].value);
+		if (params[0].value == 0) {
+			pgm.setIntPointer((int) params[1].value);
 		}
 	}
 

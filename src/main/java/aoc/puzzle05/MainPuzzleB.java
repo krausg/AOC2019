@@ -17,7 +17,7 @@ public class MainPuzzleB {
 		cmdMap.put(3, new OpCodeRead(System.in));
 		cmdMap.put(4, new OpCodeWrite());
 		cmdMap.put(5, new OpCodeJumpIfNotNull());
-		cmdMap.put(6, new OpCodeJumpIfFNull());
+		cmdMap.put(6, new OpCodeJumpIfNull());
 		cmdMap.put(7, new OpCodeExprLessThan());
 		cmdMap.put(8, new OpCodeExprEquals());
 		cmdMap.put(99, new OpCodeExit());

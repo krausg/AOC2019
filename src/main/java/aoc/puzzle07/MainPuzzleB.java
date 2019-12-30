@@ -18,7 +18,7 @@ import aoc.puzzle05.OpCodeAdd;
 import aoc.puzzle05.OpCodeExit;
 import aoc.puzzle05.OpCodeExprEquals;
 import aoc.puzzle05.OpCodeExprLessThan;
-import aoc.puzzle05.OpCodeJumpIfFNull;
+import aoc.puzzle05.OpCodeJumpIfNull;
 import aoc.puzzle05.OpCodeJumpIfNotNull;
 import aoc.puzzle05.OpCodeMult;
 
@@ -30,7 +30,7 @@ public class MainPuzzleB {
 		cmdMap.put(2, new OpCodeMult());
 		cmdMap.put(4, new OpCodeWriteAndPause());
 		cmdMap.put(5, new OpCodeJumpIfNotNull());
-		cmdMap.put(6, new OpCodeJumpIfFNull());
+		cmdMap.put(6, new OpCodeJumpIfNull());
 		cmdMap.put(7, new OpCodeExprLessThan());
 		cmdMap.put(8, new OpCodeExprEquals());
 		cmdMap.put(99, new OpCodeExit());

@@ -1,6 +1,6 @@
 package aoc.puzzle05;
 
-public class OpCodeJumpIfFNull implements IntCodeCmd {
+public class OpCodeJumpIfNull implements IntCodeCmd {
 
 	@Override
 	public void execute(IntCodeController pgm, IntCodeValue[] params) {

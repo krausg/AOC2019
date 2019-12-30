@@ -3,6 +3,7 @@ package aoc.puzzle08;
 import static aoc.puzzle08.AssertArrayUtils.assertListArrayEquals;
 import static aoc.puzzle08.ImageArrayUtils.arrayToLayerArray;
 import static aoc.puzzle08.ImageArrayUtils.loadImageArrayOfFile;
+import static aoc.puzzle08.ImageArrayUtils.mergeArrayLayers;
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertArrayEquals;
 
@@ -12,6 +13,13 @@ import java.util.List;
 import org.junit.Test;
 
 public class ImageArrayUtilsTest {
+
+	@Test
+	public void testMergeArrayLayers() throws IOException {
+		List<int[]> real = asList(new int[] { 0, 2, 2, 2 }, new int[] { 1, 1, 2, 2 }, new int[] { 2, 2, 1, 2 },
+				new int[] { 0, 0, 0, 0 });
+		assertArrayEquals(new int[] { 0, 1, 1, 0 }, mergeArrayLayers(real));
+	}
 
 	@Test
 	public void testArrayToLayerArray1() throws IOException {

@@ -27,7 +27,6 @@ public interface IntCodeCmd {
 	}
 
 	default public void destroy() {
-
 	}
 
 	void execute(IntCodeController pgm, IntCodeValue[] params);

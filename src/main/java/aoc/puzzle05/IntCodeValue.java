@@ -2,19 +2,23 @@ package aoc.puzzle05;
 
 public class IntCodeValue {
 
-	public int value = 0;
+	public long value = 0;
 
-	public IntCodeValue(String value) {
-		this(Integer.parseInt(value));
+	public IntCodeValue(IntCodeValue value) {
+		this(value.value);
 	}
 
-	public IntCodeValue(int value) {
+	public IntCodeValue(String value) {
+		this(Long.parseLong(value));
+	}
+
+	public IntCodeValue(long value) {
 		super();
 		this.value = value;
 	}
 
-	public int[] valueArray() {
-		return (value + "").chars().map(x -> x - '0').toArray();
+	public long[] valueArray() {
+		return (value + "").chars().mapToLong(x -> x - '0').toArray();
 	}
 
 	@Override

@@ -23,6 +23,7 @@ public class IntCodeProgram implements IntCodeController {
 
 	public IntCodeProgram(IntCodeMemory memory, Map<Integer, IntCodeCmd> cmdMap) {
 		super();
+		this.setName("Main");
 		this.memory = memory;
 		this.cmdMap = cmdMap;
 	}
@@ -38,7 +39,7 @@ public class IntCodeProgram implements IntCodeController {
 	public String run() {
 		while (!isPaused && !isHalted) {
 			IntCodeValue opCode = memory.valueAt(intPointer, IMMEDIATE_MODE);
-			cmdMap.get(opCode.value % 100).execute(this);
+			cmdMap.get((int) opCode.value % 100).execute(this);
 		}
 		return output.toString();
 	}
